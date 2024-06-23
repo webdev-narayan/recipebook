@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, } from "typeorm"
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
@@ -15,4 +15,10 @@ export class User {
 
     @Column()
     is_admin: boolean
+
+    @Column()
+    profileUrl: string
+
+    @Column()
+    phone: string
 }
