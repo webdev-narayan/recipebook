@@ -12,8 +12,8 @@ export class UsersService {
         const user = this.userRepository.create(createUserDto);
         return this.userRepository.save(user)
     }
-    findAll(role: string) {
-        return [role]
+    findAll() {
+        return this.userRepository.find({ relations: ["role"] })
     }
     findOne(id: number) {
         return id

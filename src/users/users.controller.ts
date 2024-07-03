@@ -7,8 +7,8 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) { };
 
     @Get() // users/ to list all the users
-    async findAll(@Query("role") role?: "Admin" | "Customer") {
-        return this.usersService.findAll(role)
+    async findAll() {
+        return this.usersService.findAll();
     };
     @Get(":id") // users/ to list all the users
     async findOne(@Query("id") id: number) {

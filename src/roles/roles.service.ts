@@ -17,7 +17,7 @@ export class RolesService {
     }
 
     findAll() {
-        const roles = this.roleRepository.find();
+        const roles = this.roleRepository.find({ relations: ["users"] });
         return roles
     }
 }

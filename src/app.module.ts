@@ -6,6 +6,9 @@ import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
 import { database, database_password, database_user } from './config';
 import { MorganMiddleware } from './common/middlewares/morgan';
+import { PostsModule } from './posts/posts.module';
+import { HttpExceptionFilter } from './common/error.filter';
+import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -19,10 +22,15 @@ import { MorganMiddleware } from './common/middlewares/morgan';
       synchronize: true
     }),
     UsersModule,
-    RolesModule
+    RolesModule,
+    PostsModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,
+    {
+      useClass: HttpExceptionFilter,
+      provide: APP_FILTER
+    }],
 
 })
 // to use global middlewares
